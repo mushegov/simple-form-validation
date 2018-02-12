@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru-KZ">
+  <head>
+    <meta charset="utf-8">
+    <title>Тестовое задание</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="heading">Тестовое задание</h1>
+    </header>
+    <main class="main">
+      <form class="main-form">
+        <div class="element">
+          <label for="surname">Ваша фамилия как указано в документе, удостоверяющем личность</label>
+          <input id="surname" class="form-field" type="text" name="surname" placeholder="Иванов" required>
+        </div>
+        <div class="element">
+          <label for="name">Ваше имя как указано в документе, удостоверяющем личность</label>
+          <input id="name" class="form-field" type="text" name="name" placeholder="Иван" required>
+        </div>
+        <div class="element">
+          <label for="patronym">Ваше отчетство как указано в документе, удостоверяющем личность</label>
+          <input id="patronym" class="form-field" type="text" name="patronym" placeholder="Иванович" required>
+        </div>
+        <div class="element">
+          <label for="birth-date">Ваша дата рождения</label>
+          <input id="birth-date" class="form-field" type="date" name="birth-date" required>
+        </div>
+        <div class="element">
+          <label for="sex">Ваш пол</label>
+          <select id="sex" class="form-field" name="sex" required>
+            <option value="">Выберите пол</option>
+            <option value="male">Мужской</option>
+            <option value="female">Женский</option>
+          </select>
+        </div>
+        <div class="element">
+          <label for="iin">Ваш ИИН</label>
+          <input id="iin" class="form-field" type="text" minlength="12" maxlength="12" name="iin" placeholder="xxxxxxxxxxxx" required>
+        </div>
+        <div class="element element-controls">
+          <button type="submit" class="submit">Отправить</button>
+          <button type="reset">Очистить</button>
+        </div>
+      </form>
+    </main>
+    <footer class="footer">
+      Владимир Мушегов
+    </footer>
+    <script src="js/validate.js"></script>
+  </body>
+</html>

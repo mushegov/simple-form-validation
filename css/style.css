@@ -1,0 +1,167 @@
+:root {
+  --default-text-color: #000000;
+  --light-text-color: #aaaaaa;
+  --light-color: #eeeeee;
+  --border-color: #cccccc;
+  --error-color: red;
+  --success-color: green;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  display: grid;
+  height: 100%;
+
+  font-size: 18px;
+  font-family: "Arial", "Helvetica Neue", "Helvetica", sans-serif;
+  color: var(--default-text-color);
+
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  padding: 3em 1em;
+
+  text-align: center;
+
+  background: var(--light-color);
+}
+
+.header .heading {
+  margin: 0;
+  padding: 0;
+
+  font-size: 2em;
+}
+
+.main {
+  padding: 4em 0;
+}
+
+.footer {
+  padding: 1.5em 1em;
+
+  text-align: center;
+
+  background: var(--light-color);
+}
+
+.main-form {
+  display: grid;
+  width: 80%;
+  min-width: 300px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  grid-gap: 5vh 5vw;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.main-form .element {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.main-form .element-controls {
+  grid-column: span 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.main-form .element-controls button[type="reset"] {
+  background: none;
+  border: 0;
+  margin-left: 2em;
+  text-decoration: underline;
+  font-size: 0.8em;
+}
+
+.main-form label {
+  display: block;
+  margin-bottom: 1em;
+  flex-grow: 1;
+
+  font-size: 0.8em;
+  color: var(--light-text-color);
+}
+
+.main-form button,
+.main-form input,
+.main-form select {
+  padding: 0 1em;
+  height: 3em;
+}
+
+.main-form input,
+.main-form select {
+  display: block;
+  width: 100%;
+  border: solid 1px var(--border-color);
+  border-radius: 3px;
+}
+
+.main-form input.empty,
+.main-form select.empty {
+  border-color: var(--error-color);
+}
+
+.main-form input.filled,
+.main-form select.filled {
+  border-color: var(--success-color);
+}
+
+.main-form button {
+  cursor: pointer;
+}
+
+.main-form .success-message {
+  border: solid 1px var(--success-color);
+  padding: 2em;
+  text-align: center;
+  color: var(--success-color);
+  grid-column: span 3;
+  border-radius: 3px;
+  background: rgba(0, 255, 0, 0.125);
+}
+
+
+@media (max-width: 991px) {
+  .main-form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .main-form .element-controls,
+  .main-form .success-message {
+    grid-column: span 2;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .header .heading {
+    font-size: 1.5em;
+  }
+
+  .main-form {
+    grid-template-columns: 1fr;
+  }
+
+  .main-form .element-controls,
+  .main-form .success-message {
+    grid-column: span 1;
+  }
+}
