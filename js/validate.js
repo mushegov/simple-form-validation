@@ -11,12 +11,12 @@ var sexValue = sexSelect.value;
 var iinValue = iinInput.value;
 
 
-//
+// Проверяем есть ли в строке НЕцифры
 function isNumeric(num) {
   return !isNaN(num);
 }
 
-//
+// Проверяем не пустое ли поле
 function checkIsFieldFilled(field) {
   if (field.value === '') {
     field.classList.add('empty');
@@ -29,7 +29,7 @@ function checkIsFieldFilled(field) {
   }
 }
 
-//
+// Проверяем заполнена ли форма(кроме поля ИИН)
 function checkIsFormFilled() {
   var fields = form.querySelectorAll('.form-field');
   var isFilled = true;
@@ -45,7 +45,7 @@ function checkIsFormFilled() {
   return isFilled;
 }
 
-//
+// Собираем введенную дату в нужный формат
 function serializeDate(date) {
   var newDate = {
     century: date.slice(0, 2),
@@ -57,7 +57,7 @@ function serializeDate(date) {
   return newDate;
 }
 
-//
+// Высчитываем 7 цифру
 function calculateIinSevenDigit(date, sex) {
   var digit;
   var century = date.century;
@@ -84,14 +84,14 @@ function calculateIinSevenDigit(date, sex) {
   return digit;
 }
 
-//
+// Высчитываем первые 6 цифр ИИН исходя из даты рождения
 function getIindate(date) {
   var iinDate = date.year + date.month + date.day;
 
   return iinDate;
 }
 
-//
+// Высчитываем первые 7 цифр ИИН
 function calculateIin() {
   if (dateValue !== '' && sexValue !== '') {
     var iinDate = getIindate(dateValue);
@@ -107,7 +107,7 @@ function calculateIin() {
   return false;
 }
 
-//
+// Устанавливаем плейсходлер поля ИИН
 function setIinPlaceholder(iin) {
   var placeholder = iinInput.getAttribute('placeholder');
 
@@ -117,7 +117,7 @@ function setIinPlaceholder(iin) {
   iinInput.setAttribute('placeholder', iinPlaceholder + placeholderPostfix);
 }
 
-//
+// Проверяем контрольный регистр
 function validateControlDigit(iinTypedValue) {
   var testOneData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
   var testTwoData = [3, 4, 5, 6, 7, 8, 9, 10, 11, 1, 2];
@@ -149,7 +149,7 @@ function validateControlDigit(iinTypedValue) {
   return false;
 }
 
-//
+// Проверяем ИИН
 function validateIin(iinTypedValue) {
   if (iinTypedValue.length === 12 && isNumeric(iinTypedValue)) {
     var typedIinPrefix = iinTypedValue.slice(0, 7);
@@ -173,7 +173,7 @@ function validateIin(iinTypedValue) {
   return false;
 }
 
-//
+// Обработчик
 function onBirhtDateInputChange() {
   dateValue = serializeDate(birthDateInput.value);
   checkIsFieldFilled(birthDateInput);
@@ -181,7 +181,7 @@ function onBirhtDateInputChange() {
   calculateIin();
 }
 
-//
+// Обработчик
 function onSexSelectChange() {
   sexValue = sexSelect.value;
 
@@ -190,7 +190,7 @@ function onSexSelectChange() {
   calculateIin();
 }
 
-//
+// Обработчик
 function onIinInputChange() {
   var isIinValid = validateIin(iinInput.value);
 
@@ -203,7 +203,7 @@ function onIinInputChange() {
   }
 }
 
-//
+// Обработчик
 function onSubmitClick(evt) {
   evt.preventDefault();
 
@@ -215,7 +215,7 @@ function onSubmitClick(evt) {
   }
 }
 
-//
+// Показываем сообщение об успешной валидации
 function showSuccessMessage() {
   var message = document.createElement('div');
   message.innerText = 'Форма заполнена верно!';
@@ -223,7 +223,7 @@ function showSuccessMessage() {
   form.appendChild(message);
 }
 
-//
+// Слушатели
 birthDateInput.addEventListener('change', onBirhtDateInputChange);
 sexSelect.addEventListener('change', onSexSelectChange);
 iinInput.addEventListener('change', onIinInputChange);
